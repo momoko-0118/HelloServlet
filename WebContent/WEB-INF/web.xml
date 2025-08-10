@@ -26,4 +26,13 @@ http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1"
   	<url-pattern>/HelloServlet/WelcomeServlet</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>Inquiry</servlet-name>
+  	<servlet-class>InquiryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Inquiry</servlet-name>
+  	<url-pattern>/HelloServlet/InquiryServlet</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
