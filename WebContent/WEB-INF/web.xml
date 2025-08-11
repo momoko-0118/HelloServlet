@@ -44,4 +44,13 @@ http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1"
   	<url-pattern>/HelloServlet/TestServlet</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>MySQL</servlet-name>
+  	<servlet-class>MySQLServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>MySQL</servlet-name>
+  	<url-pattern>/HelloServlet/MySQLServlet</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
