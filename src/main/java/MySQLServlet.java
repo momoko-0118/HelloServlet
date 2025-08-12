@@ -41,6 +41,7 @@ public class MySQLServlet extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 		
+		//データを空にしておく
 		Connection conn = null;
 		String url = "jdbc:mysql://localhost/testdb";
 		String user = "root";
@@ -50,10 +51,14 @@ public class MySQLServlet extends HttpServlet {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			conn = DriverManager.getConnection(url, user, password);
 			
+			//テーブルのデータを出力する
 			Statement stmt = conn.createStatement();
+			//指定したSQLを実行して結果を格納
 			String sql = "SELECT * FROM test_table";
+			//結果を返す
 			ResultSet rs = stmt.executeQuery(sql);
-			
+		
+			//次の行にカーソルが移動する間続ける
 			while(rs.next()) {
 				int userId = rs.getInt("user_id");
 				String userName = rs.getString("user_name");
@@ -65,12 +70,17 @@ public class MySQLServlet extends HttpServlet {
 		
 		rs.close();
 		stmt.close();
+		
+		//指定のクラスが見つからない
 		}catch (ClassNotFoundException e) {
 			out.println("ClassNotFoundException:" + e.getMessage());
+		//ドライバやDBサーバーのエラー
 		}catch (SQLException e) {
 			out.println("SQLException:" + e.getMessage());
+		//ドライバやDBサーバーのエラー
 		}catch (Exception e) {
 			out.println("Exception:" + e.getMessage());
+		//最後に問題が発生した場合もDBとの接続を切るために、必ず書くフレーズ
 		}finally {
 			try {
 				if (conn !=null) {
